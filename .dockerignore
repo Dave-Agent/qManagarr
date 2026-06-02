@@ -1,0 +1,23 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Frontend build artifacts and dependencies
+frontend/node_modules/
+frontend/dist/
+
+# Data
+data/
+*.db
+
+# Environment and secrets
+.env
+
+# Development only
+prototype/
+
+# Git
+.git/
+.gitignore

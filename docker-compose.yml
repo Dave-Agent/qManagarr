@@ -1,0 +1,14 @@
+services:
+  qmanagarr:
+    build: .
+    container_name: qmanagarr
+    ports:
+      - "7487:7487"
+    volumes:
+      - ./data:/app/data
+      # Uncomment to edit module descriptions without rebuilding:
+      # - ./backend/content:/app/backend/content
+    environment:
+      - PUID=1000
+      - PGID=1000
+    restart: unless-stopped

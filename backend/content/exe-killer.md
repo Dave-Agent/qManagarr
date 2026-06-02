@@ -1,0 +1,3 @@
+Torrents from unverified sources occasionally contain executable files disguised as or bundled with media. This module inspects each torrent's file list and immediately removes any download that contains a blocked file extension — before significant data has been transferred. It acts as a last line of defence against malicious content masquerading as movies or TV shows.
+
+The default blocked extensions (`.exe`, `.scr`) cover the most common attack vectors. You can add extensions to tighten the filter or remove them if your use case requires it. Note that torrents still in the metadata fetch stage (`metaDL` state) are skipped until their file list becomes available on the next evaluation — this is normal behaviour and not a gap in coverage.
