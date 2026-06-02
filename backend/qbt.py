@@ -18,7 +18,9 @@ def get_session():
             data={"username": username, "password": password},
             timeout=10,
         )
-        if "Ok" in res.text:
+        # 200 "Ok." = normal success
+        # 204 empty body = auth bypassed for this IP (qBittorrent subnet whitelist)
+        if "Ok" in res.text or res.status_code == 204:
             return session, host
         return None, None
     except Exception:
