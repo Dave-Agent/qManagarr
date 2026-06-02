@@ -66,7 +66,9 @@ services:
       - your_media_network
 ```
 
-When qBittorrent is on the same Docker network, set the host URL in the qManagarr UI to `http://<qbittorrent-container-name>:<port>` rather than `localhost`.
+When qBittorrent is on the same Docker network, set the host URL in the qManagarr UI to `http://<qbittorrent-container-name>:<port>` rather than `localhost`. For example, if your qBittorrent container is named `qbittorrent` and uses the default WebUI port: `http://qbittorrent:8080`.
+
+> **Note:** qBittorrent's "Bypass authentication for subnet" feature returns HTTP 204 instead of the usual response — qManagarr handles this correctly.
 
 ### Environment variables
 
@@ -79,7 +81,7 @@ When qBittorrent is on the same Docker network, set the host URL in the qManagar
 
 | Path | Description |
 |------|-------------|
-| `/app/data` | SQLite database — all settings and history. **Mount this to persist data across container restarts.** |
+| `/app/data` | SQLite database — all settings and history. **Always mount this — without it all settings are lost when the container restarts.** |
 | `/app/backend/content` | Module description markdown files. Mount this if you want to edit the in-app module descriptions without rebuilding the image. |
 
 ---
