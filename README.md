@@ -22,9 +22,24 @@ An automated torrent management tool for qBittorrent, designed for use alongside
 
 ### Standalone
 
+Create a `docker-compose.yml` — no source code required:
+
+```yaml
+services:
+  qmanagarr:
+    image: ghcr.io/dave-agent/qmanagarr:latest
+    container_name: qmanagarr
+    ports:
+      - "7487:7487"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - PUID=1000
+      - PGID=1000
+    restart: unless-stopped
+```
+
 ```bash
-git clone https://github.com/youruser/qmanagarr.git
-cd qmanagarr
 docker compose up -d
 ```
 
@@ -37,7 +52,7 @@ Add qManagarr as a service in your existing `docker-compose.yml`:
 ```yaml
 services:
   qmanagarr:
-    build: /path/to/qmanagarr
+    image: ghcr.io/dave-agent/qmanagarr:latest
     container_name: qmanagarr
     ports:
       - "7487:7487"

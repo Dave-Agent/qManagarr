@@ -1,6 +1,8 @@
 services:
   qmanagarr:
-    build: .
+    image: ghcr.io/dave-agent/qmanagarr:latest
+    # Uncomment to build locally from source instead:
+    # build: .
     container_name: qmanagarr
     ports:
       - "7487:7487"
