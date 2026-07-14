@@ -27,6 +27,9 @@ WORKDIR /app
 COPY requirements.txt .
 RUN uv pip install --system --no-cache -r requirements.txt
 
+ARG GIT_SHA=dev
+ENV GIT_SHA=$GIT_SHA
+
 # Copy application source
 COPY backend/ ./backend/
 

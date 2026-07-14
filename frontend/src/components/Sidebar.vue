@@ -65,17 +65,26 @@
 
     <!-- Version -->
     <div class="px-4 py-2.5 border-t border-border">
-      <span class="text-[10px] text-muted-foreground/40">v0.8.0</span>
+      <span class="text-[10px] text-muted-foreground/40">{{ version }}</span>
     </div>
 
   </aside>
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
 import {
   LayoutDashboard, CheckCircle2, ShieldX, AlertCircle,
   Clock, Activity, ScrollText, Settings2,
 } from 'lucide-vue-next'
+
+const version = ref('—')
+onMounted(async () => {
+  try {
+    const res = await fetch('/api/settings/version')
+    version.value = (await res.json()).version
+  } catch { /* leave as — */ }
+})
 
 const props = defineProps({
   activePanel: String,

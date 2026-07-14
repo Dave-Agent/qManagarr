@@ -1,9 +1,17 @@
+import os
+
 from fastapi import APIRouter
 from pydantic import BaseModel
 
 from .. import db, qbt
 
 router = APIRouter(prefix="/api/settings", tags=["settings"])
+
+
+@router.get("/version")
+def get_version():
+    sha = os.getenv("GIT_SHA", "dev")
+    return {"version": f"sha-{sha[:7]}" if sha != "dev" else "dev"}
 
 
 class QBittorrentSettings(BaseModel):
