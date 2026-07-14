@@ -2,6 +2,8 @@
 
 An automated torrent management tool for qBittorrent, designed for use alongside the *arr stack (Sonarr, Radarr). Runs as a background daemon with a web UI for configuration.
 
+![qManagarr dashboard](docs/screenshot.png)
+
 ## Features
 
 - **Dashboard** — connection status, metrics (active, all-time, watch list, purges), purge breakdown by module, and live torrent list
@@ -13,7 +15,7 @@ An automated torrent management tool for qBittorrent, designed for use alongside
 - Each module can be individually enabled/disabled and configured via non-linear sliders
 - **Torrent exclusions** — toggle per-torrent on the dashboard; excluded torrents are ignored by all modules and auto-cleared when the torrent leaves qBittorrent
 - **Managed categories** — configurable list of qBittorrent categories in scope (default: radarr, tv-sonarr)
-- **Configurable scheduler** — set evaluation interval (5m–24h); trigger an immediate evaluation from the dashboard
+- **Configurable scheduler** — set evaluation interval (5m–24h)
 - **Activity log** — filterable by level (All / Watch+ / Warning+)
 
 ---
